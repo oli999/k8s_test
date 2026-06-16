@@ -1,0 +1,18 @@
+# deploy2.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: httpd-deploy
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: httpd-app
+  template:
+    metadata:
+      labels:
+        app: httpd-app
+    spec:
+      containers:
+      - name: httpd-container
+        image: httpd:alpine
