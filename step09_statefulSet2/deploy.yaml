@@ -1,0 +1,38 @@
+# step09/deploy.yaml
+apiVersion: apps/v1
+kind: StatefulSet # state 를 가지고 있는 Deployment 라고 생각하면 된다.
+metadata:
+  name: nginx-deploy
+spec: 
+  serviceName: headless-svc # 연결할 headless 서비스의 이름을 명시한다 
+  replicas: 3
+  selector:
+    matchLabels:
+      app: stateful-nginx
+  template:
+    metadata:
+      labels:
+        app: stateful-nginx
+    spec:
+      containers:
+      - name: nginx-ctn
+        image: nginx:latest
+        volumeMounts:
+        - name: web-storage
+          mountPath: /usr/share/nginx/html  # 실습의 편의를 위해서 마운트함 
+  
+  # pvc 를 겸비한 volume 을 만들기
+  # container 에서 아래에 정의한 web-storage 라는 이름의 volume 을 마운트 할때마다
+  # pv-sf 라는 클래스명으로 미리 준비된 pv 가 사용된다 
+  # replica: 3 이면  동일 클래스명으로 최소 3개가 미리 준비 되어 있어야한다. 
+  volumeClaimTemplates:
+  - metadata:
+      # volume 의 이름 
+      name: web-storage
+    spec:
+      accessModes:
+      - ReadWriteOnce
+      storageClassName: pv-sf # pv 클래스명 
+      resources:
+        requests:
+          storage: 50Mi
