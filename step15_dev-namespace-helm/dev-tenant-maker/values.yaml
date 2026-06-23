@@ -1,0 +1,12 @@
+#  dev-tenant-maker/values.yaml
+
+# 변수들만 모아 두는곳
+namespace: dev
+teamName: team1
+
+# quota 는 object type 을 가지고 있는 변수 
+quota:
+  cpu: "2"
+  memory: "2Gi"
+  pods: "10"
+  services: "5"
