@@ -61,5 +61,27 @@ scott_db=> select * from member;
 \q 
 exit
 
+### k8s 모니터링 tool  k9s 설치
+
+>~/.kube/config 파일을 이용해서 동작한다
+
+#### ubuntu k9s 설치
+
+```bash
+wget https://github.com/derailed/k9s/releases/latest/download/k9s_Linux_amd64.tar.gz
+tar -zxvf k9s_Linux_amd64.tar.gz
+sudo mv k9s /usr/local/bin/
+rm k9s_Linux_amd64.tar.gz LICENSE README.md
+k9s
+```
+
+#### rocky k9s 설치
+
+```bash
+curl -sS -L https://github.com/derailed/k9s/releases/latest/download/k9s_Linux_amd64.tar.gz -o k9s_Linux_amd64.tar.gz
+tar -zxvf k9s_Linux_amd64.tar.gz
+sudo mv k9s /usr/local/bin/
+rm k9s_Linux_amd64.tar.gz LICENSE README.md
+```
 
 ```
