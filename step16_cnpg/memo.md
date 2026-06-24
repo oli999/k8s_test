@@ -84,4 +84,14 @@ sudo mv k9s /usr/local/bin/
 rm k9s_Linux_amd64.tar.gz LICENSE README.md
 ```
 
+<img  src="./assets/image03.png">
+<img  src="./assets/image04.png">
+
+### NodePort 서비스를 이용해서 외부에서 접속 가능하도록 하기
+
+```bash
+kubectl apply -f cnpg-nodeport.yaml
 ```
+
+<img src="./assets/image05.png">
+<img src="./assets/image06.png">
