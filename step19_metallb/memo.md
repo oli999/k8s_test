@@ -19,8 +19,18 @@ k apply -f 02-ip-pool.yaml
 k apply -f 03-advertise.yaml
 k apply -f deploy-svc-nginx.yaml
 
+# metallb-system 이라는 namespace 에 어떤 pod 가 있는지 확인
+k get pod -n metallb-system -o wide
+NAME                          READY   STATUS    RESTARTS   AGE
+controller-5c6b6c8447-64jcm   1/1     Running   0          2m53s
+speaker-8bh28                 1/1     Running   0          2m53s
+speaker-bxz6d                 1/1     Running   0          2m53s
+speaker-mz6ng                 1/1     Running   0          2m53s
+
+
 # 아래를 실행해서 nginx-lb-svc 에 EXTERNAL-IP 에 IP 주소가 부여된것을 확인한다
 k get all svc -o wide | grep nginx-lb-svc
 NAME                     TYPE           CLUSTER-IP       EXTERNAL-IP   PORT(S)          AGE   SELECTOR
 nginx-lb-svc             LoadBalancer   10.103.233.198   172.16.8.30   80:32125/TCP     92s   app=nginx-test
+
 ```
