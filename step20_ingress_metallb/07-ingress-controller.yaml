@@ -362,7 +362,7 @@ spec:
     app.kubernetes.io/component: controller
     app.kubernetes.io/instance: ingress-nginx
     app.kubernetes.io/name: ingress-nginx
-  type: NodePort # Service type 이 default 로 NodePort 이다 
+  type: LoadBalancer # Service type 이 default 로 NodePort 이다 
 ---
 apiVersion: v1
 kind: Service
