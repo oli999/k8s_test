@@ -7,6 +7,8 @@ kubectl create namespace argocd
 # 2. 아르고 CD 를 다운받지 않고 즉석에서 바로 설치하기
 kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/v2.11.0/manifests/install.yaml
 
+
+
 # 3. 설치후에 svc 목록 확인
 kubectl get svc -n argocd
 
@@ -49,4 +51,8 @@ Host github.com
 # 권한 조정
 chmod 600 id_ed25519
 chomd 600 config
+
+# argocd 설치후 삭제하는 방법
+kubectl delete -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/v2.11.0/manifests/install.yaml
+
 ```
