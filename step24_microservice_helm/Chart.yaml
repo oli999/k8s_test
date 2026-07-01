@@ -1,0 +1,21 @@
+apiVersion: v2
+name: msa-platform
+description: index + market + post
+type: application
+version: 0.1.0
+appVersion: "1.0.0"
+
+# 의존하는 dependency chart 목록
+dependencies:
+  - name: index-app
+    version: "0.1.0"
+    # "file://하위 chart 의 경로를 작성"
+    repository: "file://charts/index"
+
+  - name: market-app
+    version: "0.1.0"
+    repository: "file://charts/market"
+  
+  - name: post-app
+    version: "0.1.0"
+    repository: "file://charts/post"
